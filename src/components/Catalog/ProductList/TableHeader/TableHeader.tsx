@@ -19,7 +19,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({
     }
   };
 
-  const renderSortIcon = (field: string) => {
+  const renderSortIcon = () => {
     return (
       <div className={styles.sortIcon}>
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({
           onClick={() => handleSort('year')}
         >
           <span>Год</span>
-          {renderSortIcon('year')}
+          {renderSortIcon()}
         </th>
         <th>Марка</th>
         <th>Модель</th>
@@ -51,28 +51,28 @@ const TableHeader: React.FC<TableHeaderProps> = ({
           onClick={() => handleSort('volume')}
         >
           <span>Объем</span>
-          {renderSortIcon('volume')}
+          {renderSortIcon()}
         </th>
         <th 
           className={`${styles.sortableHeader} ${sortField === 'odometer' ? styles.active : ''}`}
           onClick={() => handleSort('odometer')}
         >
           <span>Одометр</span>
-          {renderSortIcon('odometer')}
+          {renderSortIcon()}
         </th>
         <th 
           className={`${styles.sortableHeader} ${sortField === 'date' ? styles.active : ''}`}
           onClick={() => handleSort('date')}
         >
           <span>Дата</span>
-          {renderSortIcon('date')}
+          {renderSortIcon()}
         </th>
         <th 
           className={`${styles.sortableHeader} ${sortField === 'currentBid' ? styles.active : ''}`}
           onClick={() => handleSort('currentBid')}
         >
           <span>Ставка</span>
-          {renderSortIcon('currentBid')}
+          {renderSortIcon()}
         </th>
         <th>Действие</th>
       </tr>

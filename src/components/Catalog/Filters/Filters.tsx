@@ -103,7 +103,6 @@ const Filters: React.FC<FiltersProps> = ({ filterOptions, onFiltersChange }) => 
       
       <ActiveFilters 
         filters={selectedFilters}
-        filterOptions={filterOptions}
         onRemoveFilter={handleRemoveFilter}
       />
 

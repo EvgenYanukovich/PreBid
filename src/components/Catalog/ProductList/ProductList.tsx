@@ -18,25 +18,25 @@ interface ProductListProps {
   onPageChange: (page: number) => void;
 }
 
-const formatDate = (date: string | Date) => {
-  const d = new Date(date);
-  return {
-    date: d.toLocaleDateString('ru-RU', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    }).split('.').join('.'),
-    time: d.toLocaleTimeString('ru-RU', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
-    })
-  };
-};
+// const formatDate = (date: string | Date) => {
+//   const d = new Date(date);
+//   return {
+//     date: d.toLocaleDateString('ru-RU', {
+//       day: '2-digit',
+//       month: '2-digit',
+//       year: 'numeric'
+//     }).split('.').join('.'),
+//     time: d.toLocaleTimeString('ru-RU', {
+//       hour: '2-digit',
+//       minute: '2-digit',
+//       hour12: false
+//     })
+//   };
+// };
 
-const formatNumber = (num: number) => {
-  return new Intl.NumberFormat('ru-RU').format(num);
-};
+// const formatNumber = (num: number) => {
+//   return new Intl.NumberFormat('ru-RU').format(num);
+//};
 
 const ProductList: React.FC<ProductListProps> = ({
   products,

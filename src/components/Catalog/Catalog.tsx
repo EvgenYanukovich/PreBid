@@ -90,6 +90,22 @@ const Catalog: React.FC = () => {
     }));
   };
 
+  const filteredProducts = transformProducts(mockProducts.products).filter(product => {
+    if (Object.keys(appliedFilters).length === 0) return true;
+    
+    return Object.entries(appliedFilters).every(([key, values]) => {
+      if (!values || values.length === 0) return true;
+      
+      switch(key) {
+        case 'year':
+          const [min, max] = values;
+          return product.year >= Number(min) && product.year <= Number(max);
+        default:
+          return values.includes(String(product[key as keyof Product]));
+      }
+    });
+  });
+
   if (!filterSettings) {
     return <div>Loading filters...</div>;
   }
@@ -111,12 +127,12 @@ const Catalog: React.FC = () => {
           onSortChange={setSortBy}
           itemsPerPage={itemsPerPage}
           onItemsPerPageChange={handleItemsPerPageChange}
-          totalItems={mockProducts.products.length}
+          totalItems={filteredProducts.length}
         />
         
         <div className={styles.productListContainer}>
           <ProductList
-            products={transformProducts(mockProducts.products)}
+            products={filteredProducts}
             viewMode={viewMode}
             currentPage={currentPage}
             itemsPerPage={itemsPerPage}

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styles from './ItemsPerPageSelect.module.scss';
 
 interface ItemsPerPageSelectProps {

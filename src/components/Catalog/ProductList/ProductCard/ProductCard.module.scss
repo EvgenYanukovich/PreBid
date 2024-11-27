@@ -1,0 +1,163 @@
+.card {
+  background: #F8F8F8;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease-in-out;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.bookmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  height: 4px;
+  background: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+  color: #000;
+}
+
+.infoTable {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #E5E7EB;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.label {
+  color: #6B7280;
+  font-size: 14px;
+}
+
+.value {
+  font-size: 14px;
+  color: #000;
+
+  &.lotNumber {
+    color: #004DD5;
+    text-decoration: underline;
+  }
+}
+
+.bidSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.currentBid {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  button {
+    flex: 1;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    vertical-align: center;
+  }
+}
+
+.bidInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.bidLabel {
+  font-family: Circe;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 12px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+
+.price {
+  font-family: Circe;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24.73px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+
+.buyNowLink {
+  display: block;
+  color: #004DD5;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: underline;
+}

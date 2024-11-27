@@ -1,0 +1,39 @@
+{
+  "filters": {
+    "driveType": {
+      "label": "Тип привода",
+      "type": "default",
+      "options": ["Переднеприводный", "Заднеприводный", "Полноприводный"]
+    },
+    "condition": {
+      "label": "Состояние",
+      "type": "default",
+      "options": ["Новое", "С пробегом"]
+    },
+    "category": {
+      "label": "Категория",
+      "type": "default",
+      "options": ["Легковой", "Грузовой", "Мотоцикл"]
+    },
+    "odometer": {
+      "label": "Одометр",
+      "type": "range",
+      "years": [2000, 2005, 2010, 2015, 2020, 2022, 2023]
+    },
+    "brand": {
+      "label": "Марка",
+      "type": "default",
+      "options": ["Audi", "BMW", "Mercedes", "Toyota", "Volkswagen"]
+    },
+    "transmission": {
+      "label": "Коробка передач",
+      "type": "default",
+      "options": ["Механическая", "Автоматическая", "Роботизированная"]
+    },
+    "fuelType": {
+      "label": "Тип топлива",
+      "type": "default",
+      "options": ["Бензин", "Дизель", "Электро", "Гибрид"]
+    }
+  }
+}

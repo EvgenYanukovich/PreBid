@@ -1,0 +1,78 @@
+.productPhotoCell {
+  padding: 0 !important;
+  width: 200px;
+}
+
+.photoContainer {
+  position: relative;
+  width: 200px;
+  height: 110px;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  img {
+    display: block;
+  }
+}
+
+.actionButton {
+  padding: 8px 16px;
+  background-color: #004DD5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #0040B0;
+  }
+}
+
+.dateColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.buyNowPrice {
+  a {
+    color: #004DD5;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

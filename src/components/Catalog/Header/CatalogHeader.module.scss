@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  background: #FFFFFF;
+
+  .leftSection {
+    .results {
+      color: #6B7A99;
+      font-size: 18px;
+
+      b {
+        color: #000;
+      }
+    }
+  }
+
+  .rightSection {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    .sortContainer, .itemsPerPage {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .label {
+        color: #6B7A99;
+        font-size: 16px;
+        white-space: nowrap;
+      }
+    }
+  }
+}

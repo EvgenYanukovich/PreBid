@@ -1,0 +1,39 @@
+.sortSelect {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .label {
+    font-size: 14px;
+    color: #6B7280;
+  }
+
+  .select {
+    appearance: none;
+    background: #FFFFFF;
+    border: 1px solid #D3D8E6;
+    border-radius: 4px;
+    padding: 8px 32px 8px 12px;
+    font-size: 14px;
+    color: #111827;
+    cursor: pointer;
+    min-width: 200px;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    &:hover {
+      border-color: #A2A9B8;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(0, 77, 213, 1);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+    }
+
+    option {
+      padding: 8px;
+    }
+  }
+}

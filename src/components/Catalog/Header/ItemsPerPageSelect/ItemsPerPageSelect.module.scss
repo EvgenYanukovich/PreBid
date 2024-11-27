@@ -1,0 +1,71 @@
+.customSelect {
+  position: relative;
+  width: 65px;
+
+  .selectValue {
+    width: 100%;
+    padding: 6px 20px 6px 8px;
+    font-size: 14px;
+    background: #FFFFFF;
+    border: 1px solid #D3D8E6;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #111827;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+
+    &:hover {
+      border-color: #A2A9B8;
+    }
+  }
+
+  .optionsList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #FFFFFF;
+    border: 1px solid #D3D8E6;
+    border-radius: 4px;
+    margin-top: 4px;
+    z-index: 10;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    .option {
+      padding: 8px;
+      cursor: pointer;
+      color: #111827;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #F3F4F6;
+      }
+
+      &.selected {
+        background-color: #EBF5FF;
+        color: #004DD5;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #F3F4F6;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #D1D5DB;
+      border-radius: 3px;
+
+      &:hover {
+        background: #9CA3AF;
+      }
+    }
+  }
+}

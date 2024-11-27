@@ -1,0 +1,141 @@
+.headerUp {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 101px 18px 101px;
+    background-color: #F0F5FF;
+
+    @media (max-width: 1440px) {
+        padding: 18px 60px;
+    }
+
+    @media (max-width: 1024px) {
+        padding: 18px 30px;
+    }
+}
+
+.headerUpRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+
+    @media (max-width: 1024px) {
+        gap: 16px;
+    }
+}
+
+.headerUpRightComponent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    @media (max-width: 1024px) {
+        gap: 8px;
+    }
+}
+
+.headerDown {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 19px 100px;
+
+    @media (max-width: 1440px) {
+        padding: 19px 60px;
+    }
+
+    @media (max-width: 1024px) {
+        padding: 19px 30px;
+    }
+}
+
+.headerDownLeft {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    @media (max-width: 1024px) {
+        gap: 20px;
+    }
+}
+
+.headerDownRight {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navList {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @media (max-width: 1024px) {
+        gap: 15px;
+    }
+
+    li {
+        a {
+            text-decoration: none;
+            color: #111827;
+            font-size: 16px;
+            white-space: nowrap;
+
+            @media (max-width: 1024px) {
+                font-size: 14px;
+            }
+
+            &:hover {
+                color: #004DD5;
+            }
+        }
+    }
+}
+
+.navItem {
+    font-size: 16px;
+}
+
+.navLink {
+    position: relative; 
+    text-decoration: none; 
+    color: #000; 
+    font-size: 16px;
+    transition: color 0.3s ease; 
+      
+    &::after {
+      content: ''; 
+      position: absolute;
+      bottom: -2px;   
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #007bff;
+      transition: width 0.3s ease;
+    }
+  
+    &:hover::after {
+      width: 100%; 
+    }
+  }
+  
+  .navLink.active {
+    
+    &::after {
+      width: 100%;
+    }
+  }
+  
+
+.headerDown  button{
+    text-wrap: nowrap;
+}

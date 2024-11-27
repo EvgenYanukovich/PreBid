@@ -1,0 +1,30 @@
+.footerBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 0;
+}
+
+.socialLinks {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.socialLinks a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialLinks img {
+    width: auto; 
+    height: auto; 
+    max-width: 24px; 
+    max-height: 24px; 
+    object-fit: contain; 
+}
+
+.copyright {
+    color: #fff;
+}

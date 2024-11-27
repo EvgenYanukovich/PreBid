@@ -1,0 +1,29 @@
+.searchBar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+}
+
+.input {
+    width: 450px;
+    max-height: 45px;
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    color: #4a4a4a;
+    outline: none;
+
+    &::placeholder {
+        color: #a0a0a0;
+    }
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+}

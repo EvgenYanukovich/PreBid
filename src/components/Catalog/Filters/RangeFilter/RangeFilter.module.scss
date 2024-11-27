@@ -1,0 +1,101 @@
+.rangeFilter {
+  width: 100%;
+  padding: 8px 12px;
+  border-bottom: 1px solid #A2A9B8;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .label {
+    font-size: 18px;
+    color: #111827;
+    padding: 12px 0;
+  }
+
+  .inputs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .customSelect {
+      position: relative;
+      width: 65px;
+
+      .selectValue {
+        width: 100%;
+        padding: 6px 20px 6px 8px;
+        font-size: 14px;
+        background: #FFFFFF;
+        border: 1px solid #D3D8E6;
+        border-radius: 4px;
+        cursor: pointer;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+
+        &:hover {
+          background-color: #E0E0EA;
+        }
+      }
+
+      .optionsList {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        background: #FFFFFF;
+        border: 1px solid #D3D8E6;
+        border-radius: 4px;
+        margin-top: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+
+        &::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 2px;
+        }
+
+        .option {
+          padding: 4px 8px;
+          cursor: pointer;
+          font-size: 14px;
+
+          &:hover {
+            background-color: #E0E0EA;
+          }
+        }
+      }
+    }
+
+    .separator {
+      color: #6B7280;
+      font-size: 14px;
+    }
+  }
+}
+
+.rangeFilter:hover {
+  .label {
+    color: rgba(0, 77, 213, 1);
+  }
+}
+
+/* Стили для выпадающего списка в Firefox */
+@-moz-document url-prefix() {
+  .rangeFilter select {
+    option {
+      padding: 2px 4px;
+      min-width: 100%;
+    }
+  }
+}

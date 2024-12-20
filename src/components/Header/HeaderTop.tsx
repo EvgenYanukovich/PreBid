@@ -50,7 +50,7 @@ function HeaderUp() {
         <div className={styles.headerUpRightComponent}>
           <p>Валюта</p>
           <Dropdown
-            options={currency.map(currency => ({ label: currency.label }))}
+            options={currency.map(curr => ({ label: curr.label }))}
           />
         </div>
       </div>

@@ -1,7 +1,8 @@
 .banner {
     position: relative;
     left: -100px;
-    width: 100vw;
+    max-width: 1920px;
+    width: calc(100% + 200px);
     height: 500px;
     display: flex;
     flex-direction: row;
@@ -10,12 +11,8 @@
     background: linear-gradient(345deg, rgba(116, 137, 210, 0.2) 30%, rgb(247, 249, 253) 43%);
     overflow: hidden;
 
-    @media (max-width: 1440px) {
-        left: -60px;
-    }
 
     @media (max-width: 1024px) {
-        left: -30px;
         height: 400px;
     }
 
@@ -23,10 +20,10 @@
         height: 100%;
         width: auto;
         object-fit: cover;
-        max-width: 50%;
+        max-width: 45%;
 
         @media (max-width: 1440px) {
-            max-width: 35%;
+            max-width: 30%;
         }
 
         @media (max-width: 1024px) {

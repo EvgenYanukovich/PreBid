@@ -5,9 +5,11 @@ interface Props {
 	styleButton: string;
 	children: ReactNode;
 	onClick?: () => void;
+	type?: 'button' | 'submit' | 'reset';
+	disabled?: boolean;
 }
 
-const Button: FC<Props> = ({ styleButton, children, onClick }) => {
+const Button: FC<Props> = ({ styleButton, children, onClick, type = 'button', disabled }) => {
 	const style =
 		`${classes.button} ` +
 		(styleButton === "greenButton"
@@ -15,7 +17,12 @@ const Button: FC<Props> = ({ styleButton, children, onClick }) => {
 			: `${classes.blueButton}`);
 
 	return ( 
-		<button className={style} onClick={onClick}>
+		<button 
+			className={style} 
+			onClick={onClick}
+			type={type}
+			disabled={disabled}
+		>
 			{children}
 		</button>
 	);

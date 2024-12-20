@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from './Dropdown.module.scss';
 import dropdown from '../../../assets/images/icons/dropdown.png'
 
-interface Option {
+export interface Option {
   icon?: string;
   label?: string;
   value?: string;  
@@ -10,12 +10,14 @@ interface Option {
 
 interface DropdownProps {
   options: Option[];
+  value?: Option;
   onChange?: (option: Option) => void;
+  className?: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, onChange }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange, className }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+  const [selectedOption, setSelectedOption] = useState<Option | null>(value || null);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -44,8 +46,14 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onChange }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (value) {
+      setSelectedOption(value);
+    }
+  }, [value]);
+
   return (
-    <div ref={dropdownRef} className={styles.dropdown}>
+    <div ref={dropdownRef} className={`${styles.dropdown} ${className}`}>
       <button onClick={() => setIsOpen(!isOpen)} className={styles.dropdownToggle}>
         {selectedOption ? (
           <div className={styles.selectedOption}>

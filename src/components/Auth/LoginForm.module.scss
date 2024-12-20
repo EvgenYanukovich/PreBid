@@ -1,0 +1,213 @@
+.authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #575757;
+    }
+
+    .register {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        p {
+            color: #0f0f14;
+            font-size: 18px;
+            font-weight: 400;
+
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+.error {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #FEE2E2;
+    border: 1px solid #FCA5A5;
+    border-radius: 6px;
+    color: #DC2626;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    label {
+        font-size: 18px;
+        color: #0f0f14;
+        font-weight: 400;
+    }
+
+    input {
+        border-radius: 4px;
+        font-size: 14px;
+        padding: 7px 11px;
+        transition: .3s;
+        border: 1px solid #e5e5ea;
+        min-height: 50px;
+        color: #575757;
+        outline: none;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            border-color: #2563EB;
+        }
+
+        &::placeholder {
+            color: #9CA3AF;
+        }
+    }
+}
+
+.phoneInputContainer {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+
+    .phoneDropdown {
+        flex-shrink: 0;
+        width: 100px;
+
+        :global {
+            .dropdownButton {
+                height: 40px;
+                background: #FFFFFF;
+                border: 1px solid #E5E7EB;
+                border-radius: 6px;
+                padding: 8px;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+
+                img {
+                    width: 20px;
+                    height: 14px;
+                    object-fit: contain;
+                }
+            }
+
+            .dropdownContent {
+                background: #FFFFFF;
+                border: 1px solid #E5E7EB;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                margin-top: 4px;
+            }
+        }
+    }
+
+    input {
+        flex-grow: 1;
+    }
+}
+
+.phoneInputGroup {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    input {
+        flex: 1;
+    }
+
+    :global(.dropdown) {
+        min-width: 100px;
+    }
+}
+
+.passwordInput {
+    position: relative;
+    width: 100%;
+
+    input {
+        border-radius: 4px;
+        font-size: 14px;
+        padding: 7px 11px;
+        transition: .3s;
+        border: 1px solid #e5e5ea;
+        min-height: 50px;
+        color: #575757;
+        outline: none;
+        width: 100%;
+    }
+
+    .togglePassword {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 0;
+        background-color: inherit;
+        transition: .3s;
+
+        &:hover {
+            color: #4B5563;
+        }
+    }
+}
+
+.formActions {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.submitButton {
+    width: 100%;
+    height: 40px;
+    background: #2563EB;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background: #1D4ED8;
+    }
+
+    &:disabled {
+        background: #9CA3AF;
+        cursor: not-allowed;
+    }
+}
+
+.formLinks {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.linkButton {
+    color: #2563EB;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 20px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

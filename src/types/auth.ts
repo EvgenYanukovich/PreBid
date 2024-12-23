@@ -11,15 +11,37 @@ export interface LoginResponse {
     expires_in: number;
 }
 
+export interface LoginFormProps {
+    onRegisterClick: () => void;
+    onLoginClick: () => void;
+    onSuccess?: () => void;
+}
+
+export interface LoginFormData {
+    email: string;
+    password: string;
+}
+
+export interface RegisterFormProps {
+    onLoginClick: () => void;
+    onSuccess: () => void;
+}
+
 export interface RegisterRequest {
     email: string;
-    name_ru: string;
-    password: string;
     phone: string;
+    name_ru: string;
     second_name_ru: string;
+    password: string;
 }
 
 export interface AuthError {
     message: string;
     errors?: Record<string, string[]>;
+}
+
+export interface LogoutResponse {
+    status: string;
+    code: number;
+    message: string;
 }

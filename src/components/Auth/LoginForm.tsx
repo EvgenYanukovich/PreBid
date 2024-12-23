@@ -1,35 +1,35 @@
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import styles from './LoginForm.module.scss';
 import authService from '../../services/auth.service';
 import Button from '../ui/Button/Button';
+import { useAuthAction } from '../../hooks/useAuthAction';
+import { LoginFormProps, LoginFormData } from '../../types/auth';
 
-interface LoginFormProps {
-    onRegisterClick: () => void;
-    onLoginClick: () => void;
-    onSuccess?: () => void;
-}
-
-export const LoginForm = ({ onRegisterClick,  onSuccess }: LoginFormProps) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+export const LoginForm = ({ onRegisterClick, onSuccess }: LoginFormProps) => {
+    const [formData, setFormData] = useState<LoginFormData>({
+        email: '',
+        password: ''
+    });
     const [showPassword, setShowPassword] = useState(false);
-    const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError('');
-        setIsLoading(true);
-
-        try {
-            await authService.login(email, password);
+    const { execute: login, isLoading, error } = useAuthAction(
+        async (data: LoginFormData) => {
+            await authService.login(data.email, data.password);
             onSuccess?.();
-        } catch (err) {
-            console.error('Ошибка входа:', err);
-            setError(err instanceof Error ? err.message : 'Произошла ошибка при входе');
-        } finally {
-            setIsLoading(false);
         }
+    );
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        await login(formData);
     };
 
     return (
@@ -46,18 +46,15 @@ export const LoginForm = ({ onRegisterClick,  onSuccess }: LoginFormProps) => {
             </div>
 
             <form onSubmit={handleSubmit}>
-                {error && (
-                    <div className={styles.error}>
-                        {error}
-                    </div>
-                )}
+                {error && <div className={styles.error}>{error}</div>}
 
                 <div className={styles.formGroup}>
                     <label>Электронная почта</label>
                     <input
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         required
                         disabled={isLoading}
                     />
@@ -68,8 +65,9 @@ export const LoginForm = ({ onRegisterClick,  onSuccess }: LoginFormProps) => {
                     <div className={styles.passwordInput}>
                         <input
                             type={showPassword ? "text" : "password"}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
                             required
                             disabled={isLoading}
                         />

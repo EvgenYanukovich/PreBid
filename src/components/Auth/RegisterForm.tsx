@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import styles from './RegisterForm.module.scss';
 import authService from '../../services/auth.service';
 import Dropdown, { Option } from '../ui/Dropdown/Dropdown';
 import belarus from "../../assets/images/country/belarus.png";
 import Button from '../ui/Button/Button';
+import { useAuthAction } from '../../hooks/useAuthAction';
+import { RegisterFormProps, RegisterRequest } from '../../types/auth';
 
-const phoneRegions: Option[] = [
+const PHONE_REGIONS: Option[] = [
     { icon: belarus, label: '+375', value: '+375' },
 ];
 
-interface RegisterFormProps {
-    onLoginClick: () => void;
-    onSuccess: () => void;
+interface RegisterFormState {
+    second_name_ru: string;
+    name_ru: string;
+    phone: string;
+    email: string;
+    password: string;
 }
 
 export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<RegisterFormState>({
         second_name_ru: '',
         name_ru: '',
         phone: '',
@@ -23,15 +28,17 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
         password: '',
     });
 
-    const [selectedPhoneCode, setSelectedPhoneCode] = useState<Option>(phoneRegions[0]);
+    const [selectedPhoneCode, setSelectedPhoneCode] = useState<Option>(PHONE_REGIONS[0]);
     const [showPassword, setShowPassword] = useState(false);
-    const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+
+    const { execute: register, isLoading, error } = useAuthAction(
+        async (data: RegisterRequest) => {
+            await authService.register(data);
+        }
+    );
 
     const formatPhoneNumber = (value: string) => {
-        
         const numbers = value.replace(/\D/g, '');
-
         if (numbers.length === 0) return '';
 
         let result = '';
@@ -52,7 +59,7 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
         return result;
     };
 
-    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/\D/g, '');
         if (value.length <= 9) {
             setFormData(prev => ({
@@ -62,7 +69,7 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
@@ -70,24 +77,17 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
         }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        setError('');
-        setIsLoading(true);
-
         const cleanPhone = formData.phone.replace(/\D/g, '');
         const dataToSend = {
             ...formData,
             phone: `${selectedPhoneCode.value}${cleanPhone}`
         };
 
-        try {
-            await authService.register(dataToSend);
+        const result = await register(dataToSend);
+        if (result !== undefined) {
             onSuccess();
-        } catch (err) {
-            setError(err instanceof Error ? err.message : 'Произошла ошибка при регистрации');
-        } finally {
-            setIsLoading(false);
         }
     };
 
@@ -123,7 +123,7 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
                     <label htmlFor="phone">Номер телефона</label>
                     <div className={styles.phoneInputGroup}>
                         <Dropdown
-                            options={phoneRegions}
+                            options={PHONE_REGIONS}
                             value={selectedPhoneCode}
                             onChange={setSelectedPhoneCode}
                             className={styles.phoneDropdown}
@@ -185,8 +185,8 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
                     </Button>
                 </div>
             </form>
-
         </div>
     );
 };
+
 export default RegisterForm;

@@ -1,26 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import Button from "../ui/Button/Button";
 import styles from "./Banner.module.scss";
-import authService from "../../services/auth.service";
-import authEvents from "../../services/auth.events";
 import Modal from "../ui/Modal/Modal";
 import LoginForm from "../Auth/LoginForm";
 import RegisterForm from "../Auth/RegisterForm";
+import { RootState } from "../../store";
 
 const Banner = () => {
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
     const [isLoginMode, setIsLoginMode] = useState(true);
-    const [isAuthenticated, setIsAuthenticated] = useState(authService.isAuthenticated());
-
-    useEffect(() => {
-        // Подписываемся на изменения состояния авторизации
-        const unsubscribe = authEvents.subscribe(() => {
-            setIsAuthenticated(authService.isAuthenticated());
-        });
-
-        // Отписываемся при размонтировании
-        return () => unsubscribe();
-    }, []);
+    const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
     const handleAuthClick = (isLogin: boolean) => {
         setIsLoginMode(isLogin);
@@ -36,7 +26,6 @@ const Banner = () => {
         handleCloseModal();
     };
 
-    // Если пользователь авторизован, не показываем баннер
     if (isAuthenticated) {
         return null;
     }
@@ -45,12 +34,12 @@ const Banner = () => {
         <>
             <section className={styles.banner}>
                 <div className={styles.bannerContent}>
-                    <h1>Надежный способ продажи<br/>и покупки авто через аукцион</h1>
+                    <h1>Надежный способ продажи<br />и покупки авто через аукцион</h1>
                     <div>
                         <Button styleButton="greenButton" onClick={() => handleAuthClick(false)}>
                             Зарегистрироваться
                         </Button>
-                        <Button styleButton="blueButton" onClick={() => handleAuthClick(true)}>
+                        <Button styleButton="whiteButton" onClick={() => handleAuthClick(true)}>
                             Войти
                         </Button>
                     </div>
@@ -60,13 +49,13 @@ const Banner = () => {
 
             <Modal isOpen={isAuthModalOpen} onClose={handleCloseModal}>
                 {isLoginMode ? (
-                    <LoginForm 
+                    <LoginForm
                         onRegisterClick={() => setIsLoginMode(false)}
-                        onSuccess={handleAuthSuccess}
                         onLoginClick={handleAuthSuccess}
+                        onSuccess={handleAuthSuccess}
                     />
                 ) : (
-                    <RegisterForm 
+                    <RegisterForm
                         onLoginClick={() => setIsLoginMode(true)}
                         onSuccess={handleAuthSuccess}
                     />

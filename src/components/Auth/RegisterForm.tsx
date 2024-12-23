@@ -29,12 +29,11 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const formatPhoneNumber = (value: string) => {
-        // Remove all non-digit characters
+        
         const numbers = value.replace(/\D/g, '');
 
         if (numbers.length === 0) return '';
 
-        // Format: (XX) XXX XX XX
         let result = '';
         if (numbers.length > 0) {
             result += '(';
@@ -76,7 +75,6 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
         setError('');
         setIsLoading(true);
 
-        // Remove formatting before sending
         const cleanPhone = formData.phone.replace(/\D/g, '');
         const dataToSend = {
             ...formData,

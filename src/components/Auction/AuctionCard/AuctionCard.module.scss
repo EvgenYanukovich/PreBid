@@ -1,0 +1,96 @@
+.auctionItem {
+  border-bottom: 1px solid #E0E0E0;
+  padding: 20px 0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 300px 200px 200px auto;
+  gap: 20px;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: start;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 20px;
+}
+
+.location {
+  display: flex;
+  gap: 8px;
+}
+
+.countryBadge {
+  display: inline-flex;
+  padding: 8px 12px;
+  background: rgb(0, 146, 192);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  min-width: 80px;
+  justify-content: center;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: start;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 500;
+  min-width: 80px;
+}
+
+.idRow {
+  color: #666;
+  font-size: 14px;
+  min-width: 100px;
+}
+
+.type {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.vehicleInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #666;
+}
+
+.timeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.startDate {
+  color: #666;
+
+  .inProgress {
+    color: #4CAF50;
+    font-weight: 500;
+  }
+}
+
+.remainingTime {
+  color: #2196F3;
+  font-size: 14px;
+  font-weight: 400;
+}

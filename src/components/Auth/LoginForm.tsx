@@ -51,7 +51,7 @@ export const LoginForm = ({ onRegisterClick, onSuccess }: LoginFormProps) => {
                 <div className={styles.formGroup}>
                     <label>Электронная почта</label>
                     <input
-                        type="email"
+                        type="text"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}

@@ -74,13 +74,12 @@ const Catalog: React.FC = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    // Можно добавить прокрутку к началу списка
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleItemsPerPageChange = (value: number) => {
     setItemsPerPage(value);
-    setCurrentPage(1); // Сбрасываем на первую страницу при изменении количества элементов
+    setCurrentPage(1);
   };
 
   const transformProducts = (products: MockProduct[]): Product[] => {
@@ -92,11 +91,11 @@ const Catalog: React.FC = () => {
 
   const filteredProducts = transformProducts(mockProducts.products).filter(product => {
     if (Object.keys(appliedFilters).length === 0) return true;
-    
+
     return Object.entries(appliedFilters).every(([key, values]) => {
       if (!values || values.length === 0) return true;
-      
-      switch(key) {
+
+      switch (key) {
         case 'year':
           const [min, max] = values;
           return product.year >= Number(min) && product.year <= Number(max);
@@ -113,12 +112,12 @@ const Catalog: React.FC = () => {
   return (
     <div className={styles.catalog}>
       <div className={styles.filtersSection}>
-        <Filters 
+        <Filters
           filterOptions={filterSettings}
           onFiltersChange={handleFilterChange}
         />
       </div>
-      
+
       <div className={styles.contentSection}>
         <CatalogHeader
           viewMode={viewMode}
@@ -129,7 +128,7 @@ const Catalog: React.FC = () => {
           onItemsPerPageChange={handleItemsPerPageChange}
           totalItems={filteredProducts.length}
         />
-        
+
         <div className={styles.productListContainer}>
           <ProductList
             products={filteredProducts}

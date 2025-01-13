@@ -29,14 +29,14 @@ const Header: React.FC = () => {
     setIsAuthModalOpen(false);
   };
 
-  const fullName = userInfo?.client 
+  const fullName = userInfo?.client
     ? `${userInfo.client.name_ru} ${userInfo.client.second_name_ru}`
     : '';
 
   return (
     <header className={styles.header}>
       <HeaderUp />
-      <HeaderDown 
+      <HeaderDown
         onAuthClick={handleAuthClick}
         isAuthenticated={isAuthenticated}
         userFullName={fullName}

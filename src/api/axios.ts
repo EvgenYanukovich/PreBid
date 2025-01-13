@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { API_URL } from '../config/api';
+import { store } from '../store';
+import { logout } from '../store/slices/authSlice';
 
 export const api = axios.create({
     baseURL: API_URL,
@@ -17,5 +19,17 @@ api.interceptors.request.use((config) => {
     }
     return config;
 });
+
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response?.status === 401) {
+            // Если получили 401, значит токен истек или недействителен
+            localStorage.removeItem('jwt_token');
+            store.dispatch(logout());
+        }
+        return Promise.reject(error);
+    }
+);
 
 export default api;

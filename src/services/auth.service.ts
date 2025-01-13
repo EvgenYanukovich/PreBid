@@ -46,7 +46,7 @@ class AuthService {
         if (!token) {
             throw new Error('No token found');
         }
-        const response = await api.get<UserInformation>('https://autoru.neonface.by/api/v2/user/information');
+        const response = await api.get<UserInformation>('/user/information');
         return response.data;
     }
 }

@@ -1,5 +1,9 @@
 const AboutPage = () => {
-    return <div>This is About Page</div>;
+  return (
+    <div>
+      <h2>О нас</h2>
+    </div>
+  );
 };
 
 export default AboutPage;

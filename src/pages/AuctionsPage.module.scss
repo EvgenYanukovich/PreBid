@@ -1,0 +1,16 @@
+.auctionsPage {
+  font-family: 'Circe', sans-serif;
+
+  h2 {
+    font-family: 'Circe', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    color: #000;
+  }
+
+  :global {
+    .MuiTypography-root {
+      font-family: 'Circe', sans-serif;
+    }
+  }
+}

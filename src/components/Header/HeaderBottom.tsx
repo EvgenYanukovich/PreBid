@@ -16,13 +16,14 @@ const MENU_ITEMS = [
     { label: "Главная", path: "/" },
     { label: "О нас", path: "/about" },
     { label: "Услуги", path: "/services" },
-    { label: "Контакты", path: "/contacts" }
+    { label: "Контакты", path: "/contacts" },
+    { label: "Аукционы", path: "/auctions" }
 ];
 
-const HeaderDown: React.FC<HeaderBottomProps> = ({ 
-    onAuthClick, 
-    isAuthenticated, 
-    userFullName 
+const HeaderDown: React.FC<HeaderBottomProps> = ({
+    onAuthClick,
+    isAuthenticated,
+    userFullName
 }) => {
     const dispatch = useDispatch<AppDispatch>();
 
@@ -59,14 +60,14 @@ const HeaderDown: React.FC<HeaderBottomProps> = ({
                 <div className={styles.headerDownRight}>
                     <Search />
                     {isAuthenticated ? (
-                        <span 
+                        <span
                             className={styles.userName}
                             onClick={handleUserNameClick}
                         >
                             {userFullName}
                         </span>
                     ) : (
-                        <Button 
+                        <Button
                             styleButton='blueButton'
                             onClick={onAuthClick}
                         >
